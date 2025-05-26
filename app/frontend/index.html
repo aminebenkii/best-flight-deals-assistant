@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flight Sniper</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" href="/static/icons/favicon.ico" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/styles.css">
+  </head>
+
+
+  <body class="h-screen overflow-hidden flex flex-col bg-gradient-to-br from-gray-50 to-gray-100 text-gray-800">
+    <!-- 100% height, No-scroll, vertical stacking child, gradient top left to bottom right, gray colors -->
+  
+    <div id="language-screen" class="w-full h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100 text-gray-800 px-6">
+      <div class="max-w-xl w-full flex flex-col items-center justify-center gap-8 text-center font-[Manrope]">
+
+        <!-- Logo + Title -->
+        <div class="flex flex-col items-center gap-3">
+          <img src="/static/icons/airarabica-logo.png" alt="Flight Sniper Logo" class="h-16 w-16 sm:h-20 sm:w-20 rounded-xl shadow-lg" />
+          <h1 style="padding-bottom: 0.5rem;" class="text-4xl sm:text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-indigo-500 drop-shadow-xl">
+            Flight Sniper
+          </h1>
+        </div>
+
+        <!-- Tagline -->
+        <p class="text-lg sm:text-xl text-gray-700 font-medium leading-relaxed">
+          Find the <span class="text-indigo-600 font-semibold">cheapest dates</span> to fly —  
+          in seconds.
+        </p>
+
+        <!-- Language CTA -->
+        <div>
+          <p class="text-sm text-gray-500 mb-3">Choose your language to begin</p>
+          <div class="flex gap-4 justify-center">
+            <button id="choose-en" class="px-6 py-2 bg-indigo-700 hover:bg-indigo-800 text-white rounded-full text-sm font-semibold transition-all">
+              English
+            </button>
+            <button id="choose-fr" class="px-6 py-2 bg-indigo-700 hover:bg-indigo-800 text-white rounded-full text-sm font-semibold transition-all">
+              Français
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+    <div id="intro-screen" class="hidden w-full h-screen flex items-center justify-center flex-col gap-8 text-center px-6 bg-gradient-to-br from-gray-50 to-gray-100 text-gray-800 font-[Manrope]">
+      
+      <!-- Dynamic Title -->
+      <h2 id="intro-title" style="padding-bottom: 0.5rem;" class="text-3xl sm:text-4xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-indigo-500 drop-shadow-md">
+        <!-- set dynamically via JS -->
+      </h2>
+
+      <!-- Dynamic Explanation Block -->
+      <div id="intro-message" class="text-base sm:text-lg leading-relaxed text-gray-700 max-w-2xl space-y-4 bg-white/70 p-6 rounded-2xl shadow-lg backdrop-blur-md border border-gray-200 text-left">
+        <!-- set dynamically via JS -->
+      </div>
+
+      <!-- Dynamic Button -->
+      <button id="start-chat" class="mt-2 px-6 py-3 bg-indigo-700 text-white rounded-full text-sm sm:text-base font-semibold hover:bg-indigo-800 transition-all shadow-md">
+        <!-- set dynamically via JS -->
+      </button>
+
+    </div>
+
+
+    <div id="chatbot-screen" class="hidden">
+      <div class="h-screen overflow-hidden flex flex-col bg-gradient-to-br from-gray-50 to-gray-100 text-gray-800">
+        <header class="relative z-50 bg-gradient-to-tr from-[#0f172a] to-[#1e293b] text-white shadow-2xl border-b border-white/10 backdrop-blur-xl font-[Manrope]">
+          <div class="max-w-6xl mx-auto px-6 py-8 flex flex-wrap sm:flex-nowrap items-center justify-between gap-6 sm:gap-10">
+
+            <!-- Left: Logo + Title -->
+            <div class="flex items-start gap-x-4 sm:gap-x-6 flex-grow min-w-0">
+              <!-- Logo -->
+              <div class="flex-shrink-0 bg-white/10 backdrop-blur-md p-2.5 rounded-2xl ring-1 ring-white/10 shadow-[0_4px_20px_rgba(255,255,255,0.08)] hover:scale-105 transition-transform duration-300">
+                <img src="/static/icons/airarabica-logo.png" alt="Air Arabica Logo" class="h-14 w-14 sm:h-16 sm:w-16 rounded-xl" />
+              </div>
+
+              <!-- Title + Subtitle -->
+              <div class="min-w-0 pb-1">
+                <h1 class="text-3xl sm:text-5xl font-bold tracking-tight bg-gradient-to-r from-cyan-300 via-indigo-300 to-purple-300 bg-clip-text text-transparent drop-shadow-2xl leading-none overflow-visible" style="padding-bottom: 0.2em;">
+                  Flight Sniper
+                </h1>
+                <p class="mt-2 text-sm sm:text-lg text-indigo-200 font-medium tracking-wide leading-snug">
+                  Trouvez les périodes les moins chères pour voyager
+                </p>
+              </div>
+            </div>
+
+            <!-- Right: Currency + Language Selectors -->
+            <div class="flex flex-wrap sm:flex-nowrap items-center gap-4 sm:gap-6">
+              <!-- Currency -->
+              <div class="relative">
+                <select id="currency" class="h-[38px] px-4 pr-9 bg-white/10 text-white rounded-full text-sm font-semibold appearance-none ring-1 ring-white/20 focus:outline-none focus:ring-2 focus:ring-cyan-300 cursor-pointer backdrop-blur-md shadow-sm hover:ring-indigo-400 transition-all duration-300">
+                  <option class="text-black" value="EUR">💶 EUR</option>
+                  <option class="text-black" value="USD">💵 USD</option>
+                  <option class="text-black" value="MAD">🪙 MAD</option>
+                  <option class="text-black" value="GBP">💷 GBP</option>
+                </select>
+                <div class="pointer-events-none absolute inset-y-0 right-3 flex items-center">
+                  <i class="fas fa-chevron-down text-indigo-300 text-xs"></i>
+                </div>
+              </div>
+
+              <!-- Language -->
+              <div class="flex gap-2 sm:gap-3">
+                <button id="lang-en" type="button" class="h-[38px] px-5 bg-white/10 hover:bg-cyan-400/20 text-white rounded-full text-sm font-semibold backdrop-blur-md shadow ring-1 ring-white/20 transition-all duration-300">
+                  English
+                </button>
+                <button id="lang-fr" type="button" class="h-[38px] px-5 bg-white/10 hover:bg-cyan-400/20 text-white rounded-full text-sm font-semibold backdrop-blur-md shadow ring-1 ring-white/20 transition-all duration-300">
+                  Français
+                </button>
+              </div>
+            </div>
+
+
+          </div>
+        </header>
+
+
+
+
+
+        <!-- Main layout: grows to fill remaining height, vertical stack, centered content, padded sides and bottom -->
+        <main class="flex-1 flex flex-col justify-between items-center px-4 pt-0 pb-4 min-h-0">
+
+          <!-- Chat container: full width, max readable width, white background, rounded bottom, shadow, border, vertical stack, overflow clipped -->
+          <div class="w-full max-w-4xl bg-white rounded-b-2xl shadow-xl border border-gray-100 flex flex-col flex-1 overflow-hidden min-h-0">
+
+            <!-- Chat messages area: grows vertically, vertical stack of bubbles, scrollable with spacing between messages -->
+            <div id="chat-messages" class="flex-grow flex flex-col gap-4 p-6 overflow-y-auto scrollbar-custom">
+            </div>
+
+            <!-- Quick suggestions: 3 dynamic buttons, same icon, spacing, light gray bg -->
+            <div id="quick-suggestions" class="grid grid-cols-3 gap-3 px-6 py-4 border-t border-gray-100 bg-gray-50">
+
+              <!-- Button 1 (dynamic label via JS) -->
+              <button id="quick-btn-1" class="quick-suggestion px-4 py-2 bg-white rounded-full text-xs sm:text-sm font-medium flex items-center justify-center gap-2">
+                <i class="fas fa-plane-departure text-blue-600"></i>
+                <span></span>
+              </button>
+
+              <!-- Button 2 (dynamic label via JS) -->
+              <button id="quick-btn-2" class="quick-suggestion px-4 py-2 bg-white rounded-full text-xs sm:text-sm font-medium flex items-center justify-center gap-2">
+                <i class="fas fa-plane-departure text-blue-600"></i>
+                <span></span>
+              </button>
+
+              <!-- Button 3 (Help) -->
+              <button id="quick-btn-help" class="quick-suggestion px-4 py-2 bg-white rounded-full text-xs sm:text-sm font-medium flex items-center justify-center gap-2">
+                <i class="fas fa-plane-departure text-blue-600"></i>
+                <span>Help</span>
+              </button>
+            </div>
+
+            <!-- Input area: white background, top border, padding, rounded bottom -->
+            <div class="p-3 border-t border-gray-100 bg-white rounded-b-2xl">
+
+              <!-- Input wrapper: horizontal flex, spacing, full width -->
+              <div class="input-wrapper flex items-center gap-2 p-1 w-full">
+
+                <!-- Emoji button: icon with hover color transition -->
+                <button class="p-2 text-gray-500 hover:text-gray-700 transition-colors">
+                  <i class="far fa-smile text-xl"></i>
+                </button>
+
+                <!-- Input field: flexible width, padded text, no borders, no ring on focus -->
+                <input 
+                  id="chat-input"
+                  type="text"
+                  placeholder="Type your message..."
+                  class="flex-1 min-w-0 px-3 py-1 text-base bg-transparent border-none focus:outline-none focus:ring-0"
+                />
+                <!-- Send button: blue gradient match header, hover darkens, disabled opacity -->
+                <button 
+                  id="send-button"
+                  class="w-12 h-12 flex-shrink-0 flex items-center justify-center bg-gradient-to-br from-blue-600 to-indigo-700 text-white rounded-full hover:opacity-90 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  <i class="fas fa-paper-plane text-lg"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </main>
+
+
+        <footer class="bg-white border-t border-gray-100 py-2">
+          <div class="max-w-4xl mx-auto px-4 text-center">
+            <p class="text-[10px] sm:text-sm text-gray-600 leading-snug tracking-wide">
+              <span class="font-semibold text-gray-800">Flight Sniper</span> — 
+              <span class="text-blue-900 font-medium">AI-Powered Flight Deals</span> • 
+              Made with <i class="fas fa-heart text-rose-400 animate-pulse mx-1"></i> 
+              by <span class="font-semibold text-gray-800">Amine BENKIRANE</span>
+            </p>
+          </div>
+        </footer>
+
+        <!-- JS Scripts -->
+        <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+        <script type="module" src="/static/js/script.js" defer></script>
+        <script type="module" src="/static/js/chat.js" defer></script>
+        
+      </div>
+    </div>
+  </body>
+</html>
