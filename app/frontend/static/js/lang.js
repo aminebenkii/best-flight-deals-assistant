@@ -24,10 +24,14 @@ export const translations = {
         "Just tell me your <strong>origin</strong> and <strong>destination</strong> — and let's find you the best combinations!"
       ],
       help: [
-        "You can ask me things like:",
-        "• One-way to Barcelona the first week of June",
-        "• Round trip to Cagliari in July, stay 8 to 10 nights",
-        "• Any cheap return flights from Madrid in August"
+        `✈️ <strong>How it works</strong>`,
+        `Just chat with your AI assistant — describe your trip, and it finds the cheapest flights based on your flexibility.`,
+        `• Search for the <strong>best one-way deals</strong> in a date range`,
+        `• Find <strong>cheap round trips</strong> in a month or custom range, even with flexible stay durations`,
+        `The more flexible you are, the better the price.`,
+        `<em>Examples:</em>`,
+        `“One-way to Barcelona in the first week of June”`,
+        `“Round trip to Cagliari in July, stay 8–10 nights”`
       ]
     }
   },
@@ -51,10 +55,14 @@ export const translations = {
         "Dites-moi simplement votre <strong>ville de départ</strong> et votre <strong>destination</strong> — et on trouvera les meilleures combinaisons !"
       ],
       help: [
-        "Vous pouvez me demander des choses comme :",
-        "• 'Aller simple pour Barcelone la première semaine de juin'",
-        "• 'Aller-retour pour Cagliari en juillet, séjour de 8 à 10 nuits'",
-        "• 'Vols aller-retour pas chers depuis Madrid en août'"
+        `✈️ <strong>Comment ça marche</strong>`,
+        `Parle simplement avec ton assistant — décris ton voyage, il trouve les vols les moins chers selon ta flexibilité.`,
+        `• Cherche les <strong>meilleurs allers simples</strong> sur une plage de dates`,
+        `• Trouve des <strong>allers-retours pas chers</strong> sur un mois ou une période, même avec durée de séjour flexible`,
+        `Plus tu es flexible, plus les prix seront bas.`,
+        `<em>Exemples :</em>`,
+        `« Aller simple pour Barcelone la première semaine de juin »`,
+        `« Aller-retour pas cher pour Cagliari en juillet, séjour de 8 à 10 nuits »`
       ]
     }
   }
